@@ -22,7 +22,7 @@ Welcome to the **History Museum Website**! This project is a digital platform de
 
 ### View the Website
 
-Visit the live website: [History Museum Website](YOUR-GITHUB-PAGES-URL)
+Visit the live website: [History Museum Website](https://github.com/Cress0419/cress0419.github.io)
 
 ### Run Locally
 
@@ -67,7 +67,7 @@ This project aims to make history more accessible and engaging through a digital
 
 ## 👤 Author
 
-Created by **[Your Name]**.
+Created by **[oranges~]**.
 
 ## 📄 License
 
