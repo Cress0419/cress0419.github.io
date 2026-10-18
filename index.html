@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover art, culture, and history at the Bowers Museum and the Getty Center.">
+  <title>Museums | Bowers Museum & The Getty Center</title>
+  <style>
+    :root {
+      --ink: #17232b;
+      --cream: #f6f4ef;
+      --rust: #a94f32;
+      --navy: #082b48;
+      --muted: #53616b;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    a { color: inherit; }
+    .site-header {
+      min-height: 76px;
+      padding: 0 clamp(20px, 5vw, 72px);
+      background: #171d20;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+      z-index: 2;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.45rem;
+      letter-spacing: .16em;
+      white-space: nowrap;
+    }
+    .brand-mark { font-size: 2rem; line-height: 1; }
+    .nav-links { display: flex; align-items: center; gap: clamp(16px, 3vw, 42px); }
+    .nav-links a {
+      font-size: .92rem;
+      text-decoration: none;
+      color: #f4f3f0;
+      padding: 10px 0;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { border-bottom-color: #fff; }
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      color: white;
+      border: 1px solid #687075;
+      border-radius: 5px;
+      padding: 8px 11px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 620px;
+    }
+    .museum-panel {
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(30px, 5vw, 76px);
+      text-align: center;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background-position: center;
+      background-size: cover;
+    }
+    .museum-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(15, 15, 13, .58), rgba(15, 15, 13, .44));
+    }
+    .bowers {
+      color: #fff;
+      background-image: url("https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1600&q=85");
+    }
+    .getty {
+      color: #082b48;
+      background-image: url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85");
+    }
+    .getty::before {
+      background: linear-gradient(90deg, rgba(226, 238, 245, .78), rgba(226, 238, 245, .42));
+    }
+    .panel-content { max-width: 540px; }
+    .eyebrow {
+      margin: 0 0 18px;
+      text-transform: uppercase;
+      letter-spacing: .24em;
+      font-size: .8rem;
+      font-weight: 600;
+    }
+    h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+    .museum-panel h1 {
+      margin: 0;
+      font-size: clamp(2.25rem, 4vw, 4rem);
+      letter-spacing: .045em;
+      line-height: 1.08;
+    }
+    .categories {
+      margin: 20px 0 30px;
+      font-size: .78rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      line-height: 1.9;
+    }
+    .panel-description {
+      max-width: 420px;
+      margin: 0 auto 28px;
+      font-size: 1.03rem;
+      line-height: 1.8;
+    }
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      min-height: 52px;
+      padding: 15px 26px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-size: .75rem;
+      font-weight: 700;
+      border-radius: 3px;
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); filter: brightness(1.08); }
+    .button-rust { background: var(--rust); color: white; }
+    .button-navy { background: var(--navy); color: white; }
+    .quick-links {
+      padding: 54px clamp(20px, 5vw, 72px) 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--cream);
+    }
+    .quick-link {
+      text-align: center;
+      text-decoration: none;
+      padding: 8px 24px 14px;
+      border-right: 1px solid #ddd9d0;
+    }
+    .quick-link:last-child { border-right: 0; }
+    .quick-link .symbol { font-size: 2rem; display: block; margin-bottom: 18px; }
+    .quick-link h2 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .9rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin: 0 0 15px;
+    }
+    .quick-link p { color: #40515c; line-height: 1.65; margin: 0 auto; max-width: 230px; }
+    .quick-link:hover h2 { text-decoration: underline; text-underline-offset: 5px; }
+    .intro {
+      padding: 64px 24px 72px;
+      background: #e9e5dc;
+      text-align: center;
+    }
+    .intro .eyebrow { color: var(--rust); }
+    .intro h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 18px; }
+    .intro p { max-width: 720px; margin: 0 auto; color: #46535b; line-height: 1.8; }
+    footer {
+      background: #171d20;
+      color: #f3f1ec;
+      padding: 28px 24px;
+      text-align: center;
+      font-size: .86rem;
+      line-height: 1.8;
+    }
+    footer a { color: #fff; }
+    :focus-visible { outline: 3px solid #d98a61; outline-offset: 4px; }
+    @media (max-width: 850px) {
+      .site-header { flex-wrap: wrap; padding-top: 17px; padding-bottom: 17px; }
+      .menu-toggle { display: inline-block; }
+      .nav-links { display: none; width: 100%; flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 0 4px; }
+      .nav-links.open { display: flex; }
+      .hero { grid-template-columns: 1fr; }
+      .museum-panel { min-height: 540px; }
+      .quick-links { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
+      .quick-link:nth-child(2) { border-right: 0; }
+    }
+    @media (max-width: 520px) {
+      .brand { font-size: 1.15rem; }
+      .museum-panel { min-height: 500px; padding: 34px 24px; }
+      .quick-links { grid-template-columns: 1fr; padding-top: 35px; }
+      .quick-link { border-right: 0; border-bottom: 1px solid #ddd9d0; padding: 22px 12px; }
+      .quick-link:last-child { border-bottom: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Museums home">
+      <span class="brand-mark" aria-hidden="true">▤</span>
+      <span>MUSEUMS</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation">Menu ☰</button>
+    <nav class="nav-links" id="main-navigation" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#bowers">Bowers Museum</a>
+      <a href="#getty">Getty Center</a>
+      <a href="#visit">Plan Your Visit</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-label="Explore two museums">
+      <article class="museum-panel bowers" id="bowers">
+        <div class="panel-content">
+          <p class="eyebrow">Art · Cultures · Histories</p>
+          <h1>Bowers Museum</h1>
+          <p class="panel-description">Explore art, culture, and history through remarkable collections and stories from around the world.</p>
+          <a class="button button-rust" href="bowers.html">
+            Explore Bowers Museum <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="museum-panel getty" id="getty">
+        <div class="panel-content">
+          <p class="eyebrow">Art · Architecture · Nature</p>
+          <h1>The Getty Center</h1>
+          <p class="panel-description">Discover art, striking architecture, peaceful gardens, and sweeping views across Los Angeles.</p>
+          <a class="button button-navy" href="https://www.getty.edu/visit/center/" target="_blank" rel="noopener noreferrer">
+            Explore the Getty Center <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <section class="quick-links" id="visit" aria-label="Helpful links">
+      <a class="quick-link" href="https://www.bowers.org/" target="_blank" rel="noopener noreferrer">
+        <span class="symbol" aria-hidden="true">♧</span>
+        <h2>Plan Your Visit</h2>
+        <p>Find visitor information, hours, tickets, and directions.</p>
+      </a>
+      <a class="quick-link" href="#bowers">
+        <span class="symbol" aria-hidden="true">▧</span>
+        <h2>Explore Exhibits</h2>
+        <p>Discover collections, featured works, and cultural stories.</p>
+      </a>
+      <a class="quick-link" href="https://www.getty.edu/visit/center/" target="_blank" rel="noopener noreferrer">
+        <span class="symbol" aria-hidden="true">▦</span>
+        <h2>Special Events</h2>
+        <p>Look for talks, tours, programs, and upcoming activities.</p>
+      </a>
+      <a class="quick-link" href="#about">
+        <span class="symbol" aria-hidden="true">♙</span>
+        <h2>About Us</h2>
+        <p>Learn how museums preserve art, history, and culture.</p>
+      </a>
+    </section>
+
+    <section class="intro" id="about">
+      <p class="eyebrow">Two destinations, countless stories</p>
+      <h2>Art and history bring us together.</h2>
+      <p>Whether you are discovering cultural treasures at the Bowers Museum or enjoying art and architecture at the Getty Center, each visit offers a new way to see the world. Use this page as a starting point to explore both destinations.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Explore more through the official websites:
+      <a href="https://www.bowers.org/" target="_blank" rel="noopener noreferrer">Bowers Museum</a> ·
+      <a href="https://www.getty.edu/visit/center/" target="_blank" rel="noopener noreferrer">The Getty Center</a>
+    </p>
+    <p>Student website project · Replace sample background images with approved museum photography before publishing.</p>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('#main-navigation');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navigation.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.textContent = isOpen ? 'Close ✕' : 'Menu ☰';
+    });
+
+    navigation.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navigation.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.textContent = 'Menu ☰';
+      });
+    });
+  </script>
+</body>
+</html>
